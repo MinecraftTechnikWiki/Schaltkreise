@@ -1,0 +1,18 @@
+{
+  "__comment":"/scoreboard objectives add PZZufG.0Wert dummy",
+  "__comment":"/execute store result score VarZufG.0Zufallswert PZZufG.0Wert run loot spawn ~ ~ ~ loot zufallsgenerator:v0zufallswert_bereich_100",
+  "pools": [
+    {
+      "rolls": {
+        "min": 0,
+        "max": 100
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:air"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "__comment":"/execute if predicate zufallsgenerator:v0chance_von_50_prozent",
+  "condition": "minecraft:random_chance",
+  "chance": 0.5
+}

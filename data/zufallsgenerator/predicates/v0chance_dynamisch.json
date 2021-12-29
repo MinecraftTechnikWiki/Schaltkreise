@@ -1,0 +1,22 @@
+{
+  "__comment":"/scoreboard objectives add PZZufG.0Wert dummy",
+  "__comment":"/scoreboard players set PZZufG.0Chance PZZufG.0Wert 50",
+  "__comment":"/execute if predicate zufallsgenerator:v0chance_dynamisch",
+  "condition": "value_check",
+  "value": {
+      "type": "uniform",
+      "min": 0,
+      "max": 100
+  },
+  "range": {
+      "min": 1,
+      "max": {
+          "type": "score",
+          "score": "PZZufG.0Wert",
+          "target": {
+              "type": "fixed",
+              "name": "PZZufG.0Chance"
+            }
+        }
+    }
+}
