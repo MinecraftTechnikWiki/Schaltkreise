@@ -1,5 +1,5 @@
 # Wenn Spieler den Stock ausgewählkt haben, erhalten sie ein Etikett.
-tag @a[nbt={SelectedItem:{tag:{EigZufG.p1Felder:true} } }] add EtiZufG.p1Ausgewaehlt
+execute as @a if items entity @s weapon.* *[minecraft:custom_data~{EigZufG.p1Felder:true}] run tag @s add EtiZufG.p1Ausgewaehlt
 
 # Wenn Spieler den Stock gerade erst ausgewählt haben, wird ihnen der Auslöser-Wert und die Position gesetzt.
 scoreboard players set @a[tag=EtiZufG.p1Ausgewaehlt,tag=!EtiZufG.p1Auswahl] PZZufG.p1Wert -99

@@ -1,5 +1,5 @@
 # Wenn man den Stock auswählt, erhält man ein Etikett.
-tag @a[nbt={SelectedItem:{tag:{EigImpG.4Stock:true} } }] add EtiImpG.4Ausgewaehlt
+execute as @a if items entity @s weapon.* *[minecraft:custom_data~{EigImpG.4Stock:true}] run tag @s add EtiImpG.4Ausgewaehlt
 
 # Wenn man den Stock ausgewählt hat, und einen Tick zuvor den Wert auf null gesetzt bekommen hat, wird geprüft ob der Wert noch kleiner oder gleich dem Abstandswert ist. Nur dann wird sein Wert um eins erhöht.
 execute as @a[tag=EtiImpG.4Ausgewaehlt,scores={PZImpG.4Wert=0..}] if score @s PZImpG.4Wert <= VarImpG.4Abstand PZImpG.4Wert run scoreboard players add @s PZImpG.4Wert 1

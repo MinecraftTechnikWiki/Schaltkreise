@@ -1,6 +1,5 @@
-# Hat man auf die Schaltfläche für das Verlängern der Felderreihe geklickt oder für eine Zufallsposition, so wird eine Partikelwolke erzeugt, mit der ein Zufallswert generiert wird.
-execute at @s[scores={PZZufG.p2Wert=1..2}] run summon minecraft:area_effect_cloud ~ ~ ~ {Duration:1,Tags:["EtiZufG.p2Alle"]}
-execute at @s[scores={PZZufG.p2Wert=1..2}] store result score VarZufG.p2Zufallswert PZZufG.p2Wert run data get entity @e[type=minecraft:area_effect_cloud,tag=EtiZufG.p2Alle,sort=nearest,limit=1] UUID[0] 1
+# Hat man auf die Schaltfläche für das Verlängern der Felderreihe geklickt oder für eine Zufallsposition, so wird ein Zufallswert generiert wird.
+execute at @s[scores={PZZufG.p2Wert=1..2}] store result score VarZufG.p2Zufallswert PZZufG.p2Wert run random value 0..2147483646 zufallsgenerator:vp2zufall
 
 # Wenn man auf die Länge geklickt hat, wird die Felderreihe verlängert oder gekürzt.
 execute if entity @s[scores={PZZufG.p2Wert=1}] run data modify storage zufallsgenerator:vp2daten "EigZufG.p2Felder" append value 0

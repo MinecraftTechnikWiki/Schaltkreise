@@ -1,5 +1,5 @@
 # Es wird ein Etikett vergeben, wenn Spieler den Stock in der Schnellleiste ausgewählt haben.
-tag @a[nbt={SelectedItem:{tag:{EigImpG.3Stock:true} } }] add EtiImpG.3Ausgewaehlt
+execute as @a if items entity @s weapon.* *[minecraft:custom_data~{EigImpG.3Stock:true}] run tag @s add EtiImpG.3Ausgewaehlt
 
 # Wenn Spieler das Etikett besitzen und mindestens den Wert eins besitzen und maximal den Abstandswert haben, dann wird ihnen der Wert um eins erhöht. Falls Spieler gerade den Stock ausgewählt haben, wird ihr Wert auf eins gesetzt.
 execute as @a[tag=EtiImpG.3Ausgewaehlt,scores={PZImpG.3Wert=1..}] if score @s PZImpG.3Wert <= VarImpG.3Abstand PZImpG.3Wert run scoreboard players add @s PZImpG.3Wert 1
