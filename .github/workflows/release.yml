@@ -1,0 +1,49 @@
+name: Release data packs for new version
+
+on:
+  push:
+    tags:
+      - '1.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout data pack
+        uses: actions/checkout@v5
+        with:
+          path: datapack
+
+      - name: Build packs from namespaces
+        run: |
+          mkdir output
+          cd datapack
+
+          echo Building namespaces
+          for namespace in $(ls data)
+          do
+            [[ "$namespace" == "minecraft" ]] && continue
+            echo ::group::Building namespace \'$namespace\'
+            zip -rv "../output/${{ github.event.repository.name }}-${{ github.ref_name }}@$namespace.zip" . -i pack.mcmeta "data/$namespace/*" "data/minecraft/*"
+            echo ::endgroup::
+          done
+          namespacesCount=$(ls -q ../output | wc -l)
+          if [ $namespacesCount -le 1 ]; then
+            rm ../output/*
+            echo No or too few namespaces built
+          else
+            echo Built $namespacesCount namespaces
+          fi
+          
+          echo ::group::Building main pack
+          zip -rv "../output/${{ github.event.repository.name }}-${{ github.ref_name }}.zip" . -i pack.mcmeta "data/*"
+          echo ::endgroup::
+          cd ..
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          preserve_order: true
+          files: output/*.zip
+          name: DP ${{ github.event.repository.name }} ${{ github.ref_name }}
