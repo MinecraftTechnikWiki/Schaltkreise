@@ -1,6 +1,10 @@
 {
-  "pack":{
-    "pack_format":41,
-    "description":"§4Minecraft-Version: 1.20.x"
+  "pack": {
+    "description":"§4Minecraft-Version: 1.21.x",
+    "min_format": [
+      94,
+      1
+    ],
+    "max_format": 94
   }
 }
